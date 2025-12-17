@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدرسة هلويست</title>
+
+  <!-- خط عربي جميل -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal', sans-serif; scroll-behavior: smooth; }
+    body { background-color: #fff; color: #e58129; line-height:1.6; }
+
+    .container { width:90%; max-width:1200px; margin:auto; }
+
+    /* Header */
+    header { position:sticky; top:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border-bottom:4px solid #e58129; z-index:999; padding:1rem 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+    header h1 { font-size:2rem; font-weight:700; color:#e58129; }
+    nav { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; }
+    nav button { background:transparent; border:none; font-weight:700; padding:0.5rem 1rem; border-radius:50px; cursor:pointer; transition: all 0.3s ease; color:#e58129; }
+    nav button:hover { background:#e58129; color:#fff; transform:scale(1.1); }
+
+    .lang-select { margin-left:1rem; }
+    .lang-select select { padding:0.3rem 0.5rem; border-radius:10px; border:1px solid #e58129; font-weight:700; color:#e58129; cursor:pointer; }
+
+    /* Hero */
+    .hero { text-align:center; padding:6rem 0; }
+    .hero h2, .hero p { color:#e58129; }
+    .hero h2 { font-size:4rem; font-weight:700; margin-bottom:1rem; }
+    .hero p { font-size:1.5rem; margin-bottom:2rem; }
+
+    /* Feature Cards */
+    .feature-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; }
+    .card { background: rgba(255,255,255,0.95); border-radius:2rem; padding:2rem; text-align:center; box-shadow:0 8px 30px rgba(229,129,41,0.2); transition:transform 0.3s ease; color:#e58129; }
+    .card:hover { transform: translateY(-10px); }
+    .card-icon { width:4rem; height:4rem; margin:auto; background:#e58129; border-radius:1rem; display:flex; justify-content:center; align-items:center; color:#fff; margin-bottom:1rem; transition: all 0.3s ease; font-size:1.5rem; }
+    .card:hover .card-icon { transform: rotate(15deg) scale(1.1); }
+    .card h3 { font-size:2rem; font-weight:700; margin-bottom:0.5rem; }
+    .card p { font-size:1rem; }
+
+    /* Staff */
+    .staff-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:3rem; }
+    .staff-card { background: rgba(255,255,255,0.95); border-radius:2rem; padding:2rem; text-align:center; box-shadow:0 8px 30px rgba(229,129,41,0.2); transition: all 0.3s ease; color:#e58129; }
+    .staff-card:hover { transform: translateY(-10px) scale(1.05); }
+    .staff-icon { width:6rem; height:6rem; margin:auto; background: #e58129; border-radius:1.5rem; display:flex; justify-content:center; align-items:center; color:#fff; margin-bottom:1rem; font-size:2rem; }
+
+    /* Footer */
+    footer { background:#e58129; color:#fff; text-align:center; padding:4rem 0; }
+    footer p { margin-top:1rem; color:#fff; }
+
+    @media(max-width:768px){
+      .hero h2{font-size:3rem;}
+      .hero p{font-size:1.2rem;}
+      .card h3{font-size:1.5rem;}
+      .card p{font-size:0.9rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="container">
+    <h1 id="site-title">مدرسة هلويست</h1>
+    <nav>
+      <button onclick="scrollToSection('hero')" id="nav-home">الرئيسية</button>
+      <button onclick="scrollToSection('about')" id="nav-about">عن المدرسة</button>
+      <button onclick="scrollToSection('vision')" id="nav-vision">الرؤية والرسالة</button>
+      <button onclick="scrollToSection('staff')" id="nav-staff">المسؤولين</button>
+
+      <div class="lang-select">
+        <select id="language" onchange="changeLanguage()">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+          <option value="ku">کوردی</option>
+        </select>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero container">
+    <h2 id="hero-title">مرحبا بكم في مدرسة هلويست</h2>
+    <p id="hero-text">نوفر تعليماً متميزاً يجمع بين الأصالة والحداثة لبناء جيل واعٍ ومبدع</p>
+
+    <div class="feature-cards">
+      <div class="card">
+        <div class="card-icon">👨‍🏫</div>
+        <h3 id="card1-title">20+</h3>
+        <p id="card1-text">المعلمين</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3 id="card2-title">300+</h3>
+        <p id="card2-text">طلاب نشط</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h3 id="card3-title">2014 - 2013</h3>
+        <p id="card3-text">تم بناء هذه المدرسة</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff Section -->
+  <section id="staff" class="container">
+    <h2 style="text-align:center; margin-top:3rem;" id="staff-title">فريق المسؤولين</h2>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <div class="staff-icon">🎓</div>
+        <h3 id="staff1-name">علي عزيز</h3>
+        <p id="staff1-role">مدير المدرسة</p>
+      </div>
+      <div class="staff-card">
+        <div class="staff-icon">👩‍🏫</div>
+        <h3 id="staff2-name">أستاذ محمد</h3>
+        <p id="staff2-role">المعاون</p>
+      </div>
+      <div class="staff-card">
+        <div class="staff-icon">🎓</div>
+        <h3 id="staff3-name">مدرسة هلويست</h3>
+        <p id="staff3-role">تابعة من وزارة التعليم</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h3 id="footer-title">مدرسة هلويست</h3>
+    <p id="footer-text">نبني المستقبل من خلال التعليم المتميز والرعاية الشاملة لطلابنا</p>
+    <p id="footer-copy">© 2025 Halwiest School - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }
+
+    function changeLanguage() {
+      const lang = document.getElementById('language').value;
+
+      if(lang === 'ar') {
+        document.getElementById('site-title').innerText = 'مدرسة هلويست';
+        document.getElementById('nav-home').innerText = 'الرئيسية';
+        document.getElementById('nav-about').innerText = 'عن المدرسة';
+        document.getElementById('nav-vision').innerText = 'الرؤية والرسالة';
+        document.getElementById('nav-staff').innerText = 'المسؤولين';
+        document.getElementById('hero-title').innerText = 'مرحبا بكم في مدرسة هلويست';
+        document.getElementById('hero-text').innerText = 'نوفر تعليماً متميزاً يجمع بين الأصالة والحداثة لبناء جيل واعٍ ومبدع';
+        document.getElementById('card1-text').innerText = 'المعلمين';
+        document.getElementById('card2-text').innerText = 'طلاب نشط';
+        document.getElementById('card3-text').innerText = 'تم بناء هذه المدرسة';
+        document.getElementById('staff-title').innerText = 'فريق المسؤولين';
+        document.getElementById('staff1-name').innerText = 'علي عزيز';
+        document.getElementById('staff1-role').innerText = 'مدير المدرسة';
+        document.getElementById('staff2-name').innerText = 'أستاذ محمد';
+        document.getElementById('staff2-role').innerText = 'المعاون';
+        document.getElementById('staff3-name').innerText = 'مدرسة هلويست';
+        document.getElementById('staff3-role').innerText = 'تابعة من وزارة التعليم';
+        document.getElementById('footer-title').innerText = 'مدرسة هلويست';
+        document.getElementById('footer-text').innerText = 'نبني المستقبل من خلال التعليم المتميز والرعاية الشاملة لطلابنا';
+        document.getElementById('footer-copy').innerText = '© 2025 Halwiest School - جميع الحقوق محفوظة';
+      } 
+      else if(lang === 'en') {
+        document.getElementById('site-title').innerText = 'Halwiest School';
+        document.getElementById('nav-home').innerText = 'Home';
+        document.getElementById('nav-about').innerText = 'About';
+        document.getElementById('nav-vision').innerText = 'Vision & Mission';
+        document.getElementById('nav-staff').innerText = 'Staff';
+        document.getElementById('hero-title').innerText = 'Welcome to Halwiest School';
+        document.getElementById('hero-text').innerText = 'We provide distinguished education combining tradition and modernity to build an aware and creative generation';
+        document.getElementById('card1-text').innerText = 'Teachers';
+        document.getElementById('card2-text').innerText = 'Active Students';
+        document.getElementById('card3-text').innerText = 'School Built';
+        document.getElementById('staff-title').innerText = 'Staff Members';
+        document.getElementById('staff1-name').innerText = 'Ali Aziz';
+        document.getElementById('staff1-role').innerText = 'School Director';
+        document.getElementById('staff2-name').innerText = 'Mr. Mohamed';
+        document.getElementById('staff2-role').innerText = 'Assistant';
+        document.getElementById('staff3-name').innerText = 'Halwiest School';
+        document.getElementById('staff3-role').innerText = 'Affiliated with Ministry of Education';
+        document.getElementById('footer-title').innerText = 'Halwiest School';
+        document.getElementById('footer-text').innerText = 'We build the future through distinguished education and comprehensive care for our students';
+        document.getElementById('footer-copy').innerText = '© 2025 Halwiest School - All rights reserved';
+      }
+      else if(lang === 'ku') {
+        document.getElementById('site-title').innerText = 'قوتابخانەی ھەلوویست';
+        document.getElementById('nav-home').innerText = 'سەرەتا';
+        document.getElementById('nav-about').innerText = 'دەربارەی قوتابخانە';
+        document.getElementById('nav-vision').innerText = 'بینینی و ئامانج';
+        document.getElementById('nav-staff').innerText = 'ئەندامان';
+        document.getElementById('hero-title').innerText = 'بەخێربێن بۆ قوتابخانەی ھەلوویست';
+        document.getElementById('hero-text').innerText = 'ئێمە فێرکردنی جیاواز و نوێ دەدەن بۆ دروستکردنی نەهەری شیاو و خەلاق';
+        document.getElementById('card1-text').innerText = 'مامۆستاکان';
+        document.getElementById('card2-text').innerText = 'خوێندکارانی چالاک';
+        document.getElementById('card3-text').innerText = 'دروستکراوی قوتابخانە';
+        document.getElementById('staff-title').innerText = 'ئەندامانی قوتابخانە';
+        document.getElementById('staff1-name').innerText = 'عەلی عەزیز';
+        document.getElementById('staff1-role').innerText = 'سەرپەرشتیاری قوتابخانە';
+        document.getElementById('staff2-name').innerText = 'مامۆستا محەممەد';
+        document.getElementById('staff2-role').innerText = 'یارمەتی';
+        document.getElementById('staff3-name').innerText = 'قوتابخانەی ھەلوویست';
+        document.getElementById('staff3-role').innerText = 'هاوبەشی وەزارەتی فێرکاری';
+        document.getElementById('footer-title').innerText = 'قوتابخانەی ھەلوویست';
+        document.getElementById('footer-text').innerText = 'ئێمە داهاتووی باش دروست دەکەین بە فێرکارییەکی جیاواز و چاودێری گشتی بۆ خوێندکارەکانمان';
+        document.getElementById('footer-copy').innerText = '© 2025 Halwiest School - هەموو مافی پاراستن هەیە';
+      }
+    }
+  </script>
+
+</body>
+</html>
